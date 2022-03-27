@@ -50,3 +50,4 @@ out/
 
 # Visual Studio CMake settings file
 CMakeSettings.json
+src/hostapi/asio/ASIOSDK/
