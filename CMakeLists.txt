@@ -244,7 +244,7 @@ if(WIN32)
   endif()
 
   if(BUILD_SHARED_LIBS)
-    configure_file(cmake/portaudio.def.in "${CMAKE_CURRENT_BINARY_DIR}/portaudio.def" @ONLY)
+    configure_file("${CMAKE_CURRENT_LIST_DIR}/cmake/portaudio.def.in" "${CMAKE_CURRENT_BINARY_DIR}/portaudio.def" @ONLY)
     target_sources(PortAudio PRIVATE "${CMAKE_CURRENT_BINARY_DIR}/portaudio.def")
   endif()
 elseif(UNIX)
@@ -350,11 +350,11 @@ if(NOT CMAKE_FRAMEWORK)
   install(FILES README.md DESTINATION "${CMAKE_INSTALL_DOCDIR}/portaudio")
   install(FILES LICENSE.txt DESTINATION "${CMAKE_INSTALL_DOCDIR}/portaudio")
 
-  configure_file(cmake/portaudio-2.0.pc.in "${CMAKE_CURRENT_BINARY_DIR}/portaudio-2.0.pc" @ONLY)
+  configure_file("${CMAKE_CURRENT_LIST_DIR}/cmake/portaudio-2.0.pc.in" "${CMAKE_CURRENT_BINARY_DIR}/portaudio-2.0.pc" @ONLY)
   install(FILES "${CMAKE_CURRENT_BINARY_DIR}/portaudio-2.0.pc"
     DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
 
-  configure_package_config_file(cmake/PortAudioConfig.cmake.in
+  configure_package_config_file("${CMAKE_CURRENT_LIST_DIR}/cmake/PortAudioConfig.cmake.in"
     "${CMAKE_CURRENT_BINARY_DIR}/cmake/portaudio/PortAudioConfig.cmake"
     INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/portaudio"
     NO_CHECK_REQUIRED_COMPONENTS_MACRO
@@ -374,7 +374,7 @@ if(NOT CMAKE_FRAMEWORK)
 
   if(NOT TARGET uninstall)
     configure_file(
-      "${CMAKE_CURRENT_SOURCE_DIR}/cmake/cmake_uninstall.cmake.in"
+      "${CMAKE_CURRENT_LIST_DIR}/cmake/cmake_uninstall.cmake.in"
       "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
       IMMEDIATE @ONLY)
     add_custom_target(uninstall
